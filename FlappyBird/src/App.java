@@ -34,8 +34,8 @@ public class App {
         flappyBird.setLayout(null);
 
         // set up button position and listener
-        int lowerBoundButton = flappyBird.halfFrameHeight + 66;
-        int rightBoundButton = flappyBird.halfFrameWidth - 100;
+        int lowerBoundButton = flappyBird.getHalfFrameHeight() + 66;
+        int rightBoundButton = flappyBird.getHalfFrameWidth() - 100;
         int buttonWidth = 200, buttonHeight = 34;
 
         startButton.setBounds(rightBoundButton, lowerBoundButton, buttonWidth, buttonHeight);
@@ -69,7 +69,7 @@ public class App {
             Color darkBlue = new Color(12, 139, 154);
 
             // set up label
-            int jLabelPosY = flappyBird.halfFrameHeight - 100;
+            int jLabelPosY = flappyBird.getHalfFrameHeight() - 100;
             setJLabelStyle(waitingToStartLabel, jLabelFont, Color.WHITE, jLabelPosY);
             setJLabelStyle(startLabel, jLabelFont, Color.WHITE, jLabelPosY - 200);
             setJLabelStyle(gameOverLabel, jLabelFont, Color.WHITE, jLabelPosY);
@@ -163,7 +163,7 @@ public class App {
     // styling label and button
     public static void setJLabelStyle(JLabel jLabel, Font font, Color color, int posY) {
         jLabel.setHorizontalAlignment(JLabel.CENTER);
-        jLabel.setBounds(0, posY, flappyBird.frameWidth, 50);
+        jLabel.setBounds(0, posY, flappyBird.getFrameWidth(), 50);
         jLabel.setFont(font);
         jLabel.setForeground(color);
     }

@@ -9,30 +9,30 @@ import java.util.Objects;
 
 public class FlappyBird extends JPanel implements ActionListener, KeyListener {
     // frame size
-    int frameWidth = 360, frameHeight = 640;
-    int halfFrameWidth = frameWidth / 2, halfFrameHeight = frameHeight / 2;
+    private int frameWidth = 360, frameHeight = 640;
+    private int halfFrameWidth = frameWidth / 2, halfFrameHeight = frameHeight / 2;
     // image assets
-    Image backgroundImage, birdImage, lowerPipeImage, upperPipeImage;
+    private Image backgroundImage, birdImage, lowerPipeImage, upperPipeImage;
     // player: size and position
-    int playerWidth = 34, playerHeight = 24;
-    int playerStartPosX = halfFrameWidth - (playerWidth / 2), playerStartPosY = halfFrameHeight - (playerHeight / 2);
-    Player player;
+    private int playerWidth = 34, playerHeight = 24;
+    private int playerStartPosX = halfFrameWidth - (playerWidth / 2), playerStartPosY = halfFrameHeight - (playerHeight / 2);
+    private Player player;
     // pipe: size and postion
-    int pipeWidth = 64, pipeHeight = 512;
-    int pipeStartPosX = frameWidth, pipeStartPosY = 0;
-    ArrayList<Pipe> pipes;
+    private int pipeWidth = 64, pipeHeight = 512;
+    private int pipeStartPosX = frameWidth, pipeStartPosY = 0;
+    private ArrayList<Pipe> pipes;
     // timer
-    Timer gameLoop, pipesCooldown;
+    private Timer gameLoop, pipesCooldown;
     // gravity
-    int gravity = 1;
+    private int gravity = 1;
     // game condition
     public enum GameCond {waitingToStart, onStart, onGame, gameOver, onPause}
-    GameCond gameCond;
+    private GameCond gameCond;
     // safe zone boundaries
-    int upperBoundSafeZone = 0, lowerBoundSafeZone = frameHeight - playerHeight;
+    private int upperBoundSafeZone = 0, lowerBoundSafeZone = frameHeight - playerHeight;
     public enum HitCond {unhit, hitTop, hitBottom}
     // score
-    int score;
+    private int score;
     // trigger
     public interface FlappyBirdListener {
         void onStart();
@@ -77,10 +77,57 @@ public class FlappyBird extends JPanel implements ActionListener, KeyListener {
         gameCond = GameCond.waitingToStart;
     }
 
-    // setter for trigger
-    public void setFlappyBirdListener(FlappyBirdListener flappyBirdListener) {
-        this.flappyBirdListener = flappyBirdListener;
-    }
+    // getter and setter
+    public int getFrameWidth() { return frameWidth; }
+    public void setFrameWidth(int frameWidth) { this.frameWidth = frameWidth; }
+    public int getFrameHeight() { return frameHeight;}
+    public void setFrameHeight(int frameHeight) { this.frameHeight = frameHeight; }
+    public int getHalfFrameWidth() { return halfFrameWidth; }
+    public void setHalfFrameWidth(int halfFrameWidth) { this.halfFrameWidth = halfFrameWidth; }
+    public int getHalfFrameHeight() { return halfFrameHeight; }
+    public void setHalfFrameHeight(int halfFrameHeight) { this.halfFrameHeight = halfFrameHeight; }
+    public Image getBackgroundImage() { return backgroundImage; }
+    public void setBackgroundImage(Image backgroundImage) { this.backgroundImage = backgroundImage; }
+    public Image getBirdImage() { return birdImage; }
+    public void setBirdImage(Image birdImage) { this.birdImage = birdImage; }
+    public Image getLowerPipeImage() { return lowerPipeImage; }
+    public void setLowerPipeImage(Image lowerPipeImage) { this.lowerPipeImage = lowerPipeImage; }
+    public Image getUpperPipeImage() { return upperPipeImage; }
+    public void setUpperPipeImage(Image upperPipeImage) { this.upperPipeImage = upperPipeImage; }
+    public int getPlayerWidth() { return playerWidth; }
+    public void setPlayerWidth(int playerWidth) { this.playerWidth = playerWidth; }
+    public int getPlayerHeight() { return playerHeight; }
+    public void setPlayerHeight(int playerHeight) { this.playerHeight = playerHeight; }
+    public int getPlayerStartPosX() { return playerStartPosX; }
+    public void setPlayerStartPosX(int playerStartPosX) { this.playerStartPosX = playerStartPosX; }
+    public int getPlayerStartPosY() { return playerStartPosY; }
+    public void setPlayerStartPosY(int playerStartPosY) { this.playerStartPosY = playerStartPosY; }
+    public Player getPlayer() { return player; }
+    public void setPlayer(Player player) { this.player = player; }
+    public int getPipeWidth() { return pipeWidth; }
+    public void setPipeWidth(int pipeWidth) { this.pipeWidth = pipeWidth; }
+    public int getPipeHeight() { return pipeHeight; }
+    public void setPipeHeight(int pipeHeight) { this.pipeHeight = pipeHeight; }
+    public int getPipeStartPosX() { return pipeStartPosX; }
+    public void setPipeStartPosX(int pipeStartPosX) { this.pipeStartPosX = pipeStartPosX; }
+    public int getPipeStartPosY() { return pipeStartPosY; }
+    public void setPipeStartPosY(int pipeStartPosY) { this.pipeStartPosY = pipeStartPosY; }
+    public Timer getGameLoop() { return gameLoop; }
+    public void setGameLoop(Timer gameLoop) { this.gameLoop = gameLoop; }
+    public Timer getPipesCooldown() { return pipesCooldown; }
+    public void setPipesCooldown(Timer pipesCooldown) { this.pipesCooldown = pipesCooldown; }
+    public int getGravity() { return gravity; }
+    public void setGravity(int gravity) { this.gravity = gravity; }
+    public GameCond getGameCond() { return gameCond; }
+    public void setGameCond(GameCond gameCond) { this.gameCond = gameCond; }
+    public int getUpperBoundSafeZone() { return upperBoundSafeZone; }
+    public void setUpperBoundSafeZone(int upperBoundSafeZone) { this.upperBoundSafeZone = upperBoundSafeZone; }
+    public int getLowerBoundSafeZone() { return lowerBoundSafeZone; }
+    public void setLowerBoundSafeZone(int lowerBoundSafeZone) { this.lowerBoundSafeZone = lowerBoundSafeZone; }
+    public int getScore() { return score; }
+    public void setScore(int score) { this.score = score; }
+    public FlappyBirdListener getFlappyBirdListener() { return flappyBirdListener; }
+    public void setFlappyBirdListener(FlappyBirdListener flappyBirdListener) { this.flappyBirdListener = flappyBirdListener; }
 
     // set up pipes
     public void placesPipe() {
